@@ -10,4 +10,4 @@ AWS의 Rekognition의 object detection(detect label) 서비스를 활용한다.
 
 
 ## S3에 업로드할 이미지
-![image](https://github.com/dude1599/AWS-image-recognition-api/assets/133233495/dace9836-c577-443f-abe4-e9ad3c4b9472){: height="50%"}
+![image](https://github.com/dude1599/AWS-image-recognition-api/assets/133233495/dace9836-c577-443f-abe4-e9ad3c4b9472){: height="50%""}
