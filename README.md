@@ -1,4 +1,4 @@
-# AWS-image-recognition-api
+# Image-recognition(detection) service
 Project Name : Image detection by using AWS recognition api
 
 ## Description : 설명
