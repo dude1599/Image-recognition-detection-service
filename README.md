@@ -97,5 +97,31 @@ AWS.config.update({
     }
   
   
-  ## 프로젝트 구현 목적에 맞게 코딩한 경우
+  ## S3 버킷에 이미지 업로드하는 코드
+    
+    const fs = require('fs');
+    // Create an instance of the S3 service
+    const s3 = new AWS.S3();
+
+    // Specify the bucket name and image file path
+    const bucketName = 'portensia1testbucket';
+    const filePath = 'D:\\rekognition\\test.jpg';
+
+    // Read the image file
+    const fileData = fs.readFileSync(filePath);
+
+    // Set the parameters for S3 upload
+    const uploadParams = {
+      Bucket: bucketName,
+      Key: 'test.jpg',
+      Body: fileData
+    };
+
+    // Upload the image file to S3
+    s3.upload(uploadParams, function(err, data) {
+      if (err) {
+        console.log('Error uploading image:', err);
+      } else {
+        console.log('Image uploaded successfully:', data.Location);
+
   
