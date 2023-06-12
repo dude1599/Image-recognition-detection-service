@@ -12,7 +12,8 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 
 
 ## S3에 업로드할 이미지
-<img src="https://github.com/dude1599/AWS-image-recognition-api/assets/133233495/dace9836-c577-443f-abe4-e9ad3c4b9472" alt="이미지 설명" width="100%" height="50%">
+![test](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/3817ef2f-34c4-4170-b298-47f560b70cb1)
+
 
 
 ## detect label을 사용한 코드. (위 사진의 라벨만 식별했을 경우)
