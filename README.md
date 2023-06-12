@@ -56,47 +56,52 @@ AWS.config.update({
   
 ## detect label을 사용하여 얻은 결과. (위 사진의 라벨만 식별했을 경우)
   Labels: [
-    {
-      Name: 'Road',
-      Confidence: 99.99671936035156,
-      Instances: [],
-      Parents: [],
-      Aliases: [],
-      Categories: [Array]
-    },
-    {
-      Name: 'Tarmac',       = 고속도로
-      Confidence: 99.99671936035156,
-      Instances: [],
-      Parents: [Array],
-      Aliases: [Array],
-      Categories: [Array]
-    },
-    {
-      Name: 'Pedestrian',   = 보행자
-      Confidence: 99.97879791259766,
-      Instances: [],
-      Parents: [Array],
-      Aliases: [],
-      Categories: [Array]
-    },
-    {
-      Name: 'Metropolis',   = 대도시(번화가)
-      Confidence: 99.92679595947266,
-      Instances: [],
-      Parents: [Array],
-      Aliases: [],
-      Categories: [Array]
-    },
-    {
-      Name: 'Walking',      = 보행활동
-      Confidence: 99.63265991210938,
-      Instances: [],
-      Parents: [Array],
-      Aliases: [],
-      Categories: [Array]
-    }
-  
+  {
+    Name: 'Shoe',
+    Confidence: 99.7796630859375,
+    Instances: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    Parents: [ [Object], [Object] ],
+    Aliases: [],
+    Categories: [ [Object] ]
+  },
+  {
+    Name: 'Boy',
+    Confidence: 99.65534210205078,
+    Instances: [ [Object] ],
+    Parents: [ [Object], [Object] ],
+    Aliases: [],
+    Categories: [ [Object] ]
+  },
+  {
+    Name: 'Child',
+    Confidence: 99.65534210205078,
+    Instances: [ [Object], [Object], [Object] ],
+    Parents: [ [Object] ],
+    Aliases: [ [Object] ],
+    Categories: [ [Object] ]
+  },
+  {
+    Name: 'Male',
+    Confidence: 99.65534210205078,
+    Instances: [ [Object] ],
+    Parents: [ [Object] ],
+    Aliases: [],
+    Categories: [ [Object] ]
+  },
+  {
+    Name: 'Person',
+    Confidence: 99.65534210205078,
+    Instances: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+    Parents: [],
+    Aliases: [ [Object] ],
+    Categories: [ [Object] ]
+  }  
   
   ## S3 버킷에 이미지 업로드하는 코드
     
