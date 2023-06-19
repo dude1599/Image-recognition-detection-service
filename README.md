@@ -18,42 +18,64 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 ![스크린샷 2023-06-19 160236](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/9ec9b1d2-2f04-435a-ae36-073ea454eaa8)
 
 
-## detect label을 사용한 코드. (위 사진의 라벨만 식별했을 경우)
-<code>
-//import required packages
-var AWS = require('aws-sdk');
+## detect label을 사용한 코드
+// Import required packages
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const Jimp = require('jimp');
 
-//AWS access details
+// AWS access details
 AWS.config.update({
-    accessKeyId: 'ACK',
-    secretAccessKey: 'SACK',
-    region: 'ap-northeast-2'
-  });
+  accessKeyId: 'AKIAU4CT3UBRVRYWPV2M',
+  secretAccessKey: '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',
+  region: 'ap-northeast-2'
+});
 
-  //input parameters
-  var params = {
-    Image: {
-     S3Object: {
-      Bucket: "portensia1testbucket", 
-      Name: "img.jpg"
-     }
-    },
-    MaxLabels: 5,
-   };
+// Create an instance of the S3 service
+const s3 = new AWS.S3();
 
-   //Call AWS Rekognition Class
+// Specify the bucket name and image file path
+const bucketName = 'portensia1testbucket';
+const filePath = 'D:\\rekognition\\img.jpg';
+
+// Read the image file
+const fileData = fs.readFileSync(filePath);
+
+// Set the parameters for S3 upload
+const uploadParams = {
+  Bucket: bucketName,
+  Key: 'img.jpg',
+  Body: fileData
+};
+
+// Upload the image file to S3
+s3.upload(uploadParams, async function(err, data) {
+  if (err) {
+    console.log('Error uploading image:', err);
+  } else {
+    console.log('Image uploaded successfully:', data.Location);
+  }
+
+  // Call AWS Rekognition class
   const rekognition = new AWS.Rekognition();
 
+  // Set the parameters for Rekognition DetectLabels API
+  const detectLabelsParams = {
+    Image: {
+      S3Object: {
+        Bucket: bucketName,
+        Name: 'img.jpg'
+      }
+    },
+    MaxLabels: 5
+  };
 
-  //Detect text
-  rekognition.detectLabels(params, function(err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    else     console.log(data);           // successful response
-
-  });
-
-// end code
-  
+  // Call Rekognition DetectLabels API
+  rekognition.detectLabels(detectLabelsParams, async function(err, data) {
+    if (err) {
+      console.log('Error detecting labels:', err);
+    } else {
+      console.log('Labels:', data.Labels);
   
 ## detect label을 사용하여 얻은 결과. (위 사진의 라벨만 식별했을 경우)
  Image uploaded successfully: https://portensia1testbucket.s3.ap-northeast-2.amazonaws.com/img.jpg
@@ -105,31 +127,53 @@ Labels: [
   }
 ]
   
-  ## S3 버킷에 이미지 업로드하는 코드
-    
-    const fs = require('fs');
-    // Create an instance of the S3 service
-    const s3 = new AWS.S3();
+  ## Jimp를 사용하여 이미지 파일에 경계 박스 그리는 방법 소개 (코드 && 결과 - 사진 첨부)
+  위에서 첨부한 이미지 파일에 경계박스를 그리는 예제 연습 및 결과 소개
+  (첨부한 이미지의 가로, 세로 길이는 1333 px이다)
+  -----------------------------------------------------------------------------------------------
+  const Jimp = require('jimp');
 
-    // Specify the bucket name and image file path
-    const bucketName = 'portensia1testbucket';
-    const filePath = 'D:\\rekognition\\img.jpg';
+// 이미지 경로
+const imagePath = 'C:\\Users\\이희윤\\Desktop\\이희윤\\img.jpg';
 
-    // Read the image file
-    const fileData = fs.readFileSync(filePath);
+Jimp.read(imagePath)
+  .then(image => {
+    // 이미지의 너비와 높이 가져오기
+    const width = image.getWidth();
+    const height = image.getHeight();
 
-    // Set the parameters for S3 upload
-    const uploadParams = {
-      Bucket: bucketName,
-      Key: 'img.jpg',
-      Body: fileData
-    };
+    // 이미지의 가로, 세로길이 출력
+    console.log('가로 길이:', width);
+    console.log('세로 길이:', height);
 
-    // Upload the image file to S3
-    s3.upload(uploadParams, function(err, data) {
-      if (err) {
-        console.log('Error uploading image:', err);
-      } else {
-        console.log('Image uploaded successfully:', data.Location);
+    // 네모박스 그리기
+    const borderWidth = 20; // 경계선 두께
+    const boxWidth = 600         // 박스 가로 세로
+    const boxHeight = 600
+    const topLeftX = 280            // 왼쪽 상단 x,y 좌표
+    const topLeftY = 400
+    const bottomRightX = 1000       // 오른쪽 하단 x,y좌표
+    const bottomRightY = 1180
+
+    // 네모박스 경계선 그리기
+    for (let x = topLeftX; x <= bottomRightX; x++) {
+      for (let y = topLeftY; y <= bottomRightY; y++) {
+        if (x < topLeftX + borderWidth || x > bottomRightX - borderWidth || y < topLeftY + borderWidth || y > bottomRightY - borderWidth) {
+          // 경계선 색깔 설정 (빨간색)
+          image.setPixelColor(Jimp.rgbaToInt(255, 0, 0, 255), x, y);
+        }
+      }
+    }
+
+    // 이미지 저장
+    image.write('output.jpg');
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
+
+
+   
 
   
