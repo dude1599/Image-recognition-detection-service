@@ -19,6 +19,7 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 
 
 ## detect label을 사용한 코드
+-----------------------------------------------------------------------------------------------
 // Import required packages
 const AWS = require('aws-sdk');
 const fs = require('fs');
@@ -78,6 +79,7 @@ s3.upload(uploadParams, async function(err, data) {
       console.log('Labels:', data.Labels);
   
 ## detect label을 사용하여 얻은 결과. (위 사진의 라벨만 식별했을 경우)
+----------------------------------------------------------------------------------------------------------
  Image uploaded successfully: https://portensia1testbucket.s3.ap-northeast-2.amazonaws.com/img.jpg
 Labels: [
   {
