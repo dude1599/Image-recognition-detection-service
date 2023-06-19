@@ -33,11 +33,10 @@ AWS.config.update({
     Image: {
      S3Object: {
       Bucket: "portensia1testbucket", 
-      Name: "신호등 사진.jpg"
+      Name: "img.jpg"
      }
     },
     MaxLabels: 5,
-    MinConfidence: 80
    };
 
    //Call AWS Rekognition Class
@@ -112,7 +111,7 @@ Labels: [
 
     // Specify the bucket name and image file path
     const bucketName = 'portensia1testbucket';
-    const filePath = 'D:\\rekognition\\test.jpg';
+    const filePath = 'D:\\rekognition\\img.jpg';
 
     // Read the image file
     const fileData = fs.readFileSync(filePath);
@@ -120,7 +119,7 @@ Labels: [
     // Set the parameters for S3 upload
     const uploadParams = {
       Bucket: bucketName,
-      Key: 'test.jpg',
+      Key: 'img.jpg',
       Body: fileData
     };
 
