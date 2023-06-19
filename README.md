@@ -180,6 +180,10 @@ Jimp.read(imagePath)
   });
 
 
+## Jimp로 이미지에 경계박스 그리고 난 후 결과 사진
+![스크린샷 2023-06-19 213308](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/d0ddd8f7-f852-49b0-bc3d-4129b0f4127e)
+
+
 
    
 
