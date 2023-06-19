@@ -141,8 +141,8 @@ s3.upload(uploadParams, async function(err, data) {
   -----------------------------------------------------------------------------------------------
   위에서 첨부한 이미지 파일에 경계박스를 그리는 예제 연습 및 결과 소개
   (첨부한 이미지의 가로, 세로 길이는 1333 px이다)
-  
-  const Jimp = require('jimp');
+  <pre><code>
+const Jimp = require('jimp');
   const imagePath = 'C:\\Users\\이희윤\\Desktop\\이희윤\\img.jpg';  // 이미지 경로
 Jimp.read(imagePath)
   .then(image => {
@@ -178,7 +178,7 @@ Jimp.read(imagePath)
   .catch(err => {
     console.error(err);
   });
-
+  </code></pre>
 
 ## Jimp로 이미지에 경계박스 그리고 난 후 결과 사진
 ![스크린샷 2023-06-19 213308](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/d0ddd8f7-f852-49b0-bc3d-4129b0f4127e)
