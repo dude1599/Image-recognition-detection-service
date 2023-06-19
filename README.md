@@ -22,39 +22,47 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 -----------------------------------------------------------------------------------------------
 <pre>
 <code>
-const AWS = require('aws-sdk'); // Import required packages
+// Import required packages
+const AWS = require('aws-sdk');
 const fs = require('fs');
 const Jimp = require('jimp');
 
+// AWS access details
 AWS.config.update({
   accessKeyId: 'AKIAU4CT3UBRVRYWPV2M',
   secretAccessKey: '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',
   region: 'ap-northeast-2'
-});  // AWS access details
+});
 
-const s3 = new AWS.S3();  // Create an instance of the S3 service
+// Create an instance of the S3 service
+const s3 = new AWS.S3();
 
+// Specify the bucket name and image file path
 const bucketName = 'portensia1testbucket';
-const filePath = 'D:\\rekognition\\img.jpg';   // Specify the bucket name and image file path
+const filePath = 'D:\\rekognition\\img.jpg';
 
-const fileData = fs.readFileSync(filePath);   // Read the image file
+// Read the image file
+const fileData = fs.readFileSync(filePath);
 
-const uploadParams = {          
+// Set the parameters for S3 upload
+const uploadParams = {
   Bucket: bucketName,
   Key: 'img.jpg',
   Body: fileData
-};                                            // Set the parameters for S3 upload
+};
 
+// Upload the image file to S3
 s3.upload(uploadParams, async function(err, data) {
   if (err) {
     console.log('Error uploading image:', err);
   } else {
     console.log('Image uploaded successfully:', data.Location);
-  }                                          // Upload the image file to S3
+  }
 
- 
-  const rekognition = new AWS.Rekognition();         // Call AWS Rekognition class
+  // Call AWS Rekognition class
+  const rekognition = new AWS.Rekognition();
 
+  // Set the parameters for Rekognition DetectLabels API
   const detectLabelsParams = {
     Image: {
       S3Object: {
@@ -63,13 +71,14 @@ s3.upload(uploadParams, async function(err, data) {
       }
     },
     MaxLabels: 5
-  };                                   // Set the parameters for Rekognition DetectLabels API
+  };
 
+  // Call Rekognition DetectLabels API
   rekognition.detectLabels(detectLabelsParams, async function(err, data) {
     if (err) {
       console.log('Error detecting labels:', err);
     } else {
-      console.log('Labels:', data.Labels);       // Call Rekognition DetectLabels API
+      console.log('Labels:', data.Labels);
 
 </code>
 </pre>
