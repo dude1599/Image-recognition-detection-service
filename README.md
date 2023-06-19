@@ -20,7 +20,8 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 
 ## detect label을 사용한 코드
 -----------------------------------------------------------------------------------------------
-
+<pre>
+<code>
 const AWS = require('aws-sdk'); // Import required packages
 const fs = require('fs');
 const Jimp = require('jimp');
@@ -69,11 +70,15 @@ s3.upload(uploadParams, async function(err, data) {
       console.log('Error detecting labels:', err);
     } else {
       console.log('Labels:', data.Labels);       // Call Rekognition DetectLabels API
+
+</code>
+</pre>
+
   
 ## detect label을 사용하여 얻은 결과. (위 사진의 라벨만 식별했을 경우)
 ----------------------------------------------------------------------------------------------------------
- Image uploaded successfully: https://portensia1testbucket.s3.ap-northeast-2.amazonaws.com/img.jpg
-Labels: [
+<pre><code>
+  Labels: [
   {
     Name: 'Pedestrian',
     Confidence: 99.97284698486328,
@@ -120,6 +125,8 @@ Labels: [
     Categories: [ [Object] ]
   }
 ]
+</code></pre>
+
   
   ## Jimp를 사용하여 이미지 파일에 경계 박스 그리는 방법 소개 (코드 && 결과 - 사진 첨부)
   -----------------------------------------------------------------------------------------------
