@@ -15,7 +15,7 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 ![img](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/2789dead-c300-4bda-9288-b06dd1b98b8c)
 
 ## AWS에서 제공하는 detect label을 돌려봤을 경우 결과값들 사진
-
+![스크린샷 2023-06-19 160236](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/9ec9b1d2-2f04-435a-ae36-073ea454eaa8)
 
 
 ## detect label을 사용한 코드. (위 사진의 라벨만 식별했을 경우)
