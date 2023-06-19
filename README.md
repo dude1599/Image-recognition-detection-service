@@ -84,7 +84,7 @@ s3.upload(uploadParams, async function(err, data) {
 </pre>
 
   
-## detect label을 사용하여 얻은 결과. (위 사진의 라벨만 식별했을 경우)
+## detect label을 사용하여 얻은 결과(사진포함). (위 사진의 라벨만 식별했을 경우)
 ----------------------------------------------------------------------------------------------------------
 <pre><code>
   Labels: [
@@ -135,6 +135,10 @@ s3.upload(uploadParams, async function(err, data) {
   }
 ]
 </code></pre>
+
+
+
+![스크린샷 2023-06-19 214147](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/02942876-0d00-4014-985a-cbe719fdc49c)
 
   
   ## Jimp를 사용하여 이미지 파일에 경계 박스 그리는 방법 소개 (코드 && 결과 - 사진 첨부)
