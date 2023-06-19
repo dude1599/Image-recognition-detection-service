@@ -55,53 +55,54 @@ AWS.config.update({
   
   
 ## detect label을 사용하여 얻은 결과. (위 사진의 라벨만 식별했을 경우)
-  Labels: [
+ Image uploaded successfully: https://portensia1testbucket.s3.ap-northeast-2.amazonaws.com/img.jpg
+Labels: [
   {
-    Name: 'Shoe',
-    Confidence: 99.7796630859375,
-    Instances: [
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object], [Object],
-      [Object]
-    ],
-    Parents: [ [Object], [Object] ],
-    Aliases: [],
-    Categories: [ [Object] ]
-  },
-  {
-    Name: 'Boy',
-    Confidence: 99.65534210205078,
-    Instances: [ [Object] ],
-    Parents: [ [Object], [Object] ],
-    Aliases: [],
-    Categories: [ [Object] ]
-  },
-  {
-    Name: 'Child',
-    Confidence: 99.65534210205078,
-    Instances: [ [Object], [Object], [Object] ],
-    Parents: [ [Object] ],
-    Aliases: [ [Object] ],
-    Categories: [ [Object] ]
-  },
-  {
-    Name: 'Male',
-    Confidence: 99.65534210205078,
-    Instances: [ [Object] ],
+    Name: 'Pedestrian',
+    Confidence: 99.97284698486328,
+    Instances: [],
     Parents: [ [Object] ],
     Aliases: [],
     Categories: [ [Object] ]
   },
   {
     Name: 'Person',
-    Confidence: 99.65534210205078,
-    Instances: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+    Confidence: 99.97284698486328,
+    Instances: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
     Parents: [],
     Aliases: [ [Object] ],
     Categories: [ [Object] ]
-  }  
+  },
+  {
+    Name: 'Boy',
+    Confidence: 98.53184509277344,
+    Instances: [ [Object] ],
+    Parents: [ [Object], [Object] ],
+    Aliases: [],
+    Categories: [ [Object] ]
+  },
+  {
+    Name: 'Male',
+    Confidence: 98.53184509277344,
+    Instances: [ [Object] ],
+    Parents: [ [Object] ],
+    Aliases: [],
+    Categories: [ [Object] ]
+  },
+  {
+    Name: 'Teen',
+    Confidence: 98.53184509277344,
+    Instances: [ [Object] ],
+    Parents: [ [Object] ],
+    Aliases: [],
+    Categories: [ [Object] ]
+  }
+]
   
   ## S3 버킷에 이미지 업로드하는 코드
     
