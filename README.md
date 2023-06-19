@@ -160,7 +160,7 @@ Jimp.read(imagePath)
     console.log('세로 길이:', height);
 
     // 네모박스 그리기
-    const borderWidth = 20; // 경계선 두께
+    const borderWidth = 10; // 경계선 두께
     const boxWidth = 600         // 박스 가로 세로
     const boxHeight = 600
     const topLeftX = 280            // 왼쪽 상단 x,y 좌표
