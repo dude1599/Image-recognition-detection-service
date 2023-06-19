@@ -20,47 +20,40 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 
 ## detect label을 사용한 코드
 -----------------------------------------------------------------------------------------------
-// Import required packages
-const AWS = require('aws-sdk');
+
+const AWS = require('aws-sdk'); // Import required packages
 const fs = require('fs');
 const Jimp = require('jimp');
 
-// AWS access details
 AWS.config.update({
   accessKeyId: 'AKIAU4CT3UBRVRYWPV2M',
   secretAccessKey: '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',
   region: 'ap-northeast-2'
-});
+});  // AWS access details
 
-// Create an instance of the S3 service
-const s3 = new AWS.S3();
+const s3 = new AWS.S3();  // Create an instance of the S3 service
 
-// Specify the bucket name and image file path
 const bucketName = 'portensia1testbucket';
-const filePath = 'D:\\rekognition\\img.jpg';
+const filePath = 'D:\\rekognition\\img.jpg';   // Specify the bucket name and image file path
 
-// Read the image file
-const fileData = fs.readFileSync(filePath);
+const fileData = fs.readFileSync(filePath);   // Read the image file
 
-// Set the parameters for S3 upload
-const uploadParams = {
+const uploadParams = {          
   Bucket: bucketName,
   Key: 'img.jpg',
   Body: fileData
-};
+};                                            // Set the parameters for S3 upload
 
-// Upload the image file to S3
 s3.upload(uploadParams, async function(err, data) {
   if (err) {
     console.log('Error uploading image:', err);
   } else {
     console.log('Image uploaded successfully:', data.Location);
-  }
+  }                                          // Upload the image file to S3
 
-  // Call AWS Rekognition class
-  const rekognition = new AWS.Rekognition();
+ 
+  const rekognition = new AWS.Rekognition();         // Call AWS Rekognition class
 
-  // Set the parameters for Rekognition DetectLabels API
   const detectLabelsParams = {
     Image: {
       S3Object: {
@@ -69,14 +62,13 @@ s3.upload(uploadParams, async function(err, data) {
       }
     },
     MaxLabels: 5
-  };
+  };                                   // Set the parameters for Rekognition DetectLabels API
 
-  // Call Rekognition DetectLabels API
   rekognition.detectLabels(detectLabelsParams, async function(err, data) {
     if (err) {
       console.log('Error detecting labels:', err);
     } else {
-      console.log('Labels:', data.Labels);
+      console.log('Labels:', data.Labels);       // Call Rekognition DetectLabels API
   
 ## detect label을 사용하여 얻은 결과. (위 사진의 라벨만 식별했을 경우)
 ----------------------------------------------------------------------------------------------------------
@@ -130,14 +122,12 @@ Labels: [
 ]
   
   ## Jimp를 사용하여 이미지 파일에 경계 박스 그리는 방법 소개 (코드 && 결과 - 사진 첨부)
+  -----------------------------------------------------------------------------------------------
   위에서 첨부한 이미지 파일에 경계박스를 그리는 예제 연습 및 결과 소개
   (첨부한 이미지의 가로, 세로 길이는 1333 px이다)
-  -----------------------------------------------------------------------------------------------
+  
   const Jimp = require('jimp');
-
-// 이미지 경로
-const imagePath = 'C:\\Users\\이희윤\\Desktop\\이희윤\\img.jpg';
-
+  const imagePath = 'C:\\Users\\이희윤\\Desktop\\이희윤\\img.jpg';  // 이미지 경로
 Jimp.read(imagePath)
   .then(image => {
     // 이미지의 너비와 높이 가져오기
@@ -166,7 +156,6 @@ Jimp.read(imagePath)
         }
       }
     }
-
     // 이미지 저장
     image.write('output.jpg');
   })
