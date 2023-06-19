@@ -52,17 +52,16 @@ const uploadParams = {
 };
 
 // Upload the image file to S3
-s3.upload(uploadParams, async function(err, data) {
+
+s3.upload(uploadParams, function(err, data) {
   if (err) {
-    console.log('Error uploading image:', err);
+    console.error('Error uploading image:', err);
   } else {
     console.log('Image uploaded successfully:', data.Location);
   }
-
   // Call AWS Rekognition class
   const rekognition = new AWS.Rekognition();
-
-  // Set the parameters for Rekognition DetectLabels API
+  // Call AWS Rekognition class
   const detectLabelsParams = {
     Image: {
       S3Object: {
@@ -73,12 +72,14 @@ s3.upload(uploadParams, async function(err, data) {
     MaxLabels: 5
   };
 
-  // Call Rekognition DetectLabels API
-  rekognition.detectLabels(detectLabelsParams, async function(err, data) {
+  rekognition.detectLabels(detectLabelsParams, function(err, data) {
     if (err) {
-      console.log('Error detecting labels:', err);
+      console.error('Error detecting labels:', err);
     } else {
       console.log('Labels:', data.Labels);
+    }
+  });
+});
 
 </code>
 </pre>
