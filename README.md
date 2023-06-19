@@ -12,7 +12,7 @@ VScode에서 아래 첨부한 이미지를 S3에 업로드한다.
 
 
 ## S3에 업로드할 이미지
-![test](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/3817ef2f-34c4-4170-b298-47f560b70cb1)
+![img](https://github.com/dude1599/Image-recognition-detection-service/assets/133233495/2789dead-c300-4bda-9288-b06dd1b98b8c)
 
 
 
